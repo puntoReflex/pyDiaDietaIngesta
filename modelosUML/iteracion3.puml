@@ -1,0 +1,12 @@
+class Day
+class DayNode
+class Diet
+
+note right
+    Responsable del
+    CRUD de días
+end note
+
+Day <--r-- DayNode
+DayNode --> DayNode
+Diet -u-> DayNode
