@@ -1,0 +1,13 @@
+class Alimento
+class NodoAlimento
+class Ingesta
+
+note right
+    Responsable del
+    CRUD de alimentos
+end note
+
+Alimento <--r-- NodoAlimento
+NodoAlimento --> NodoAlimento
+Ingesta -u-> NodoAlimento
+
