@@ -1,13 +1,13 @@
-class Alimento
-class NodoAlimento
-class Ingesta
+class Food
+class FoodNode
+class Intake
 
 note right
     Responsable del
     CRUD de alimentos
 end note
 
-Alimento <--r-- NodoAlimento
-NodoAlimento --> NodoAlimento
-Ingesta -u-> NodoAlimento
+Food <--r-- FoodNode
+FoodNode --> FoodNode
+Intake -u-> FoodNode
 
