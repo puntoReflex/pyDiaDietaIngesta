@@ -31,8 +31,8 @@ class Day {
         Scanner userInput = new Scanner(System.in);
         while (creating) {
             System.out.println("Nombre de la ingesta (-1 para terminar)");
-            String dayName = userInput.nextLine();
-            if (dayName.equals("-1")) {
+            String intakeName = userInput.nextLine();
+            if (intakeName.equals("-1")) {
                 creating = !creating;
             } else {
                 Intake intake = new Intake();
