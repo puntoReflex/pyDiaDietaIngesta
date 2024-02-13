@@ -1,0 +1,12 @@
+class Intake
+class IntakeNode
+class Day
+
+note right
+    Responsable del
+    CRUD de alimentos
+end note
+
+Intake <--r-- IntakeNode
+IntakeNode --> IntakeNode
+Day -u-> IntakeNode
