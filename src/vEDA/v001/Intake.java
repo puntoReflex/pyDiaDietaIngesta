@@ -56,6 +56,9 @@ class Intake {
 
         Intake breakfast = new Intake();
         breakfast.createIntake();
+        breakfast.editIntake();
+        breakfast.deleteIntake();
+        breakfast.deleteAllIntake();
         breakfast.printFoodListing();
 
     }
