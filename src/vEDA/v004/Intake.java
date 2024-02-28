@@ -99,8 +99,15 @@ class Intake {
         System.out.println("Alimento no encontrado");
     }
 
-    private void deleteAllFoods() {
+    private void cleanIntake() {
         first = null;
+    }
+
+    private void renameIntake() {
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Nuevo nombre de [" + this.name + "]");
+        String newName = userInput.nextLine();
+        this.name = newName;
     }
 
     public void manage() {
@@ -108,30 +115,28 @@ class Intake {
         Scanner userInput = new Scanner(System.in);
         while (managing) {
             System.out.println("Gestionando [" + this.name.toUpperCase() + "]");
-            System.out.println("[C]reate / [R]ead / [U]pdate / [D]elete / e[X]it");
-            switch (userInput.nextLine().charAt(0)) {
+            System.out.println("[C]reate / [R]ead / Re[N]ame  / [U]pdate / [D]elete / e[X]it");
+            switch (userInput.nextLine().toUpperCase().charAt(0)) {
                 case 'C':
-                case 'c':
                     createFood();
                     break;
                 case 'R':
-                case 'r':
                     System.out.println(toString());
                     break;
                 case 'U':
-                case 'u':
                     editFood();
                     break;
+                case 'N':
+                    renameIntake();
+                    break;
                 case 'D':
-                case 'd':
                     deleteFood();
                     break;
                 case 'X':
-                case 'x':
                     managing = !managing;
                     break;
                 default:
-                    System.out.println("El carácter ingresado no es CRUD.");
+                    System.out.println("El carácter ingresado es inválido.");
                     break;
             }
         }

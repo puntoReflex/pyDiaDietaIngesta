@@ -57,14 +57,6 @@ class Day {
         }
     }
 
-    private void deleteIntake() {
-
-    }
-
-    private void removeIntake(String intakeName){
-
-    }
-
     private void editIntake(String intakeName){
         Scanner userInput = new Scanner(System.in);
         IntakeNode current = first;
@@ -78,31 +70,70 @@ class Day {
         System.out.println("Ingesta no encontrada");
     }
 
+    private void deleteIntake() {
+        Scanner userInput = new Scanner(System.in);
+        boolean deleting = true;
+        while (deleting) {
+            System.out.println("Nombre de la ingesta por eliminar (-1 para terminar)");
+            String intakeName = userInput.nextLine();
+            if (intakeName.equals("-1")) {
+                deleting = !deleting;
+            } else {
+                removeIntake(intakeName);
+            }
+        }        
+    }
+
+    private void removeIntake(String intakeName){
+        if (first.getIntake().getName().equals(intakeName)) {
+            first = first.getNext();
+            return;
+        } else {
+            IntakeNode current = first;
+            while (current.getNext() != null && !current.getNext().getIntake().getName().equals(intakeName)) {
+                current = current.getNext();
+            }
+            if (current.getNext() != null) {
+                current.setNext(current.getNext().getNext());
+            }
+        }
+    }
+
+    private void cleanDay() {
+        first = null;
+    }
+
+    private void renameDay() {
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Nuevo nombre de [" + this.name + "]");
+        String newName = userInput.nextLine();
+        this.name = newName;
+    }
+
     public void manage() {
         boolean managing = true;
         Scanner userInput = new Scanner(System.in);
         while (managing) {
             System.out.println("Gestionando [" + this.name.toUpperCase() + "]");
-            System.out.println("[C]reate / [R]ead / [U]pdate / [D]elete / e[X]it");
-            switch (userInput.nextLine().charAt(0)) {
+            System.out.println("[C]reate / [R]ead / Re[N]ame  / [U]pdate / [D]elete / e[X]it");
+            char userOption = userInput.nextLine().toUpperCase().charAt(0);
+            switch (userOption) {
                 case 'C':
-                case 'c':
                     createIntake();
                     break;
                 case 'R':
-                case 'r':
-                    System.out.println(toString());
+                    System.out.println(this.toString());
                     break;
                 case 'U':
-                case 'u':
                     editIntake();
                     break;
+                case 'N':
+                    renameDay();
+                    break;                    
                 case 'D':
-                case 'd':
                     deleteIntake();
                     break;
                 case 'X':
-                case 'x':
                     managing = !managing;
                     break;
                 default:
